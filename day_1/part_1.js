@@ -27,21 +27,19 @@ const partOne = (total, orderedList) => {
 };
 
 const partTwo = (orderedList) => {
-  try {
-    orderedList.forEach((v, i, arr) => {
-      const others = partOne(2020 - v, arr.slice(i + 1));
+  return orderedList.map((v, i, arr) => {
+    const others = partOne(2020 - v, arr.slice(i + 1));
 
-      if (others !== null) {
-        const sum = others.reduce((a, b) => a + b) + v;
+    if (others !== null) {
+      const sum = others.reduce((a, b) => a + b) + v;
 
-        if (sum === 2020) {
-          throw { values: [v, ...others] };
-        }
+      if (sum === 2020) {
+        console.log('found');
+        return [v, ...others];
       };
-    });
-  } catch (e) {
-    return e.values; 
-  }
+    }
+  }).filter(Boolean)
+    .shift();
 };
 
 console.log("Part One: ")
