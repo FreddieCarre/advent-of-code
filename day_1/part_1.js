@@ -31,7 +31,7 @@ const partTwo = (orderedList) => {
     const others = partOne(2020 - v, arr.slice(i + 1));
 
     if (others !== null) {
-      const sum = others.reduce((a, b) => a + b) + v;
+      const sum = [v, ...others].reduce((a, b) => a + b);
 
       if (sum === 2020) {
         console.log('found');
