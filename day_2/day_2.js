@@ -16,7 +16,6 @@ const getPwRule = (row) => {
 
 const getOrderedList = () => {
   return readFile('./day_2/input.txt')
-    .filter(Boolean)
     .map(getPwRule);
 };
 
