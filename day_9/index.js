@@ -7,20 +7,18 @@ const getInstructions = () => {
 
 const partOne = () => {
   return getInstructions()
-    .filter((v, i, a) => {
+    .filter((v, i, arr) => {
       if (i < 25) {
         return false;
       }
-      const previous = a.slice((i - 25), i);
 
-      for (let i = 0; i < previous.length; i++) {
-        for (let j = 0; j < previous.length; j++) {
-          if (previous[i] + previous[j] === v) {
-            return false;
-          }
-        }
-      }
-      return true;
+      return !arr
+        .slice((i - 25), i)
+        .find((x, i, arr) => {
+          return arr
+            .slice(i)
+            .find(y => (x !== y) && ((x + y) === v));
+        });
     }).pop();
 };
 
