@@ -45,7 +45,6 @@ const partTwo = () => {
       return v === Math.min(...a) || v === Math.max(...a);
     })
     .reduce((a, b) => a + b);
-
 };
 
 console.log("Part One:");
